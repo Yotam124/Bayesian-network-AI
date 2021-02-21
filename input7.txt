@@ -1,0 +1,105 @@
+Network
+Variables: BU,RL,FNP,PRS,ES,CST,NFF,INS,DEF,SIL,PS,SU
+
+Var BU
+Values: true,false
+Parents: none
+CPT:
+=true,0.2
+
+Var RL
+Values: true,false
+Parents: none
+CPT:
+=true,0.1
+
+Var FNP
+Values: true,false
+Parents: none
+CPT:
+=true,0.3
+
+Var PRS
+Values: true,false
+Parents: none
+CPT:
+=true,0.3
+
+Var ES
+Values: true,false
+Parents: BU,RL
+CPT:
+true,true,=true,0.85
+true,false,=true,0.4
+false,true,=true,0.6
+false,false,=true,0.05
+
+Var CST
+Values: true,false
+Parents: FNP,PRS
+CPT:
+true,true,=true,0.95
+true,false,=true,0.8
+false,true,=true,0.6
+false,false,=true,0.1
+
+Var NFF
+Values: true,false
+Parents: none
+CPT:
+=true,0.5
+
+Var Z
+Values: true,false
+Parents: none
+CPT:
+=true,0.05
+
+Var INS
+Values: true,false
+Parents: CST,Z
+CPT:
+true,true,=true,1
+true,false,=true,0
+false,true,=true,0.3
+false,false,=true,0.4
+
+Var DEF
+Values: true,false
+Parents: ES,NFF
+CPT:
+true,true,=true,0.98
+true,false,=true,0.75
+false,true,=true,0.8
+false,false,=true,0.1
+
+Var SIL
+Values: true,false
+Parents: none
+CPT:
+=true,0.2
+
+Var PS
+Values: true,false
+Parents: SIL
+CPT:
+true,=true,0.95
+false,=true,0.2
+
+Var SU
+Values: true,false
+Parents: DEF,CST,PS
+CPT:
+true,true,true,=true,0.8
+true,true,false,=true,0.95
+true,false,true,=true,0.65
+true,false,false,=true,0.75
+false,true,true,=true,0.3
+false,true,false,=true,0.4
+false,false,true,=true,0.02
+false,false,false,=true,0.05
+
+Queries
+P(CST=true|FNP=false,PRS=true,INS=true,Z=true),1
+P(CST=true|FNP=false,PRS=true,INS=true,Z=true),2
+P(CST=true|FNP=false,PRS=true,INS=true,Z=true),3
